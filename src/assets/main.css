@@ -163,6 +163,61 @@ Version: 1.0
   }
 }
 
+
+.signin-section .form-control:focus {
+  outline: none;
+  border-color: #ff2c2c;
+  box-shadow: 0 0 0 2px rgba(255, 44, 44, 0.2);
+}
+
+.signin-section .theme-btn.style-one {
+  background: #ff2c2c;
+  color: white;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.signin-section .theme-btn.style-one:hover {
+  background: #e52222;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 44, 44, 0.3);
+}
+
+.signin-section .social-login button:hover {
+  border-color: #ff2c2c;
+  transform: translateY(-2px);
+}
+
+.signin-section a:hover {
+  color: #ff6b6b !important;
+}
+
+/* Animation for the fade up effect */
+.pf_fadeup {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .signin-box {
+    padding: 30px 20px !important;
+  }
+  
+  .social-login {
+    flex-direction: column;
+  }
+}
 /* Close button inside mobile menu */
 .cs-mobile-menu-close {
   position: absolute;

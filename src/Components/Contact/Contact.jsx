@@ -21,8 +21,7 @@ const Contact = () => {
                                                 <h3>Address</h3>
                                                 <p>6801 Hollywood Blvd, Los Angeles, 
                                                     CA 90028</p>
-                                                <p>6801 Hollywood Blvd, Los Angeles, 
-                                                        CA 90028</p>
+                                              
                                             </div>
                                         </div>
                                     </li>
@@ -32,7 +31,7 @@ const Contact = () => {
                                             <div class="content">
                                                 <h3>Email</h3>
                                                 <p><a href="mailto:Info@agenko45.com">Info@peak_peark.Com</a></p>
-                                                <p><a href="mailto:Info@agenko45.com">Info@peak_peark.Com</a></p>
+                                             
                                             </div>
                                         </div>
                                     </li>

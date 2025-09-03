@@ -18,6 +18,8 @@ import ProjectDetailsPage from "../Pages/ProjectDetailsPage";
 import BlogPage from "../Pages/BlogPage";
 import BlogSidebarPage from "../Pages/BlogSidebarPage";
 import BlogDetailsPage from "../Pages/BlogDetailsPage";
+import SignIn from "../Pages/SignIn";
+import Register from "../Pages/SignUp";
 
 export const router = createBrowserRouter([
     {
@@ -87,6 +89,14 @@ export const router = createBrowserRouter([
         {
           path: "/blog/blog-details",
           element: <BlogDetailsPage></BlogDetailsPage>,
+        },                                                                                                                                                                  
+        {
+          path: "/sign-in",
+          element:<SignIn/>,
+        },                                                                                                                                                                  
+        {
+          path: "/sign-up",
+          element:<Register/>,
         },                                                                                                                                                                  
       ],
     },  

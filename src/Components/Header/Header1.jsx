@@ -43,7 +43,12 @@ export default function Header1({ variant }) {
           <div className="cs_main_header_in">
             <div className="cs_main_header_left">
             <Link className="cs_site_branding" to="/">
-            <h4 className=''>PEAK BOXING CLUB</h4>
+
+
+            {/* T */}
+            <h4 className=''>PEAK BOXING CLUB</h4>   
+
+
               </Link>
               </div>
               <div className="cs_main_header_center">
@@ -90,3 +95,5 @@ export default function Header1({ variant }) {
 
   );
 }
+
+// TODO: logo size 151/40

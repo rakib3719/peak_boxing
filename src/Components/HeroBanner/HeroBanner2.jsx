@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import cover from '../../../public/assets/images/cover/cover.jpg'
+import cover from '../../assets/images/cover.jpg'
 import { BsArrowRight } from 'react-icons/bs';
 import { GiBoxingGlove } from 'react-icons/gi';
 import { FaNutritionix } from 'react-icons/fa';
@@ -43,8 +43,10 @@ const HeroBanner2 = () => {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-lg-4">
-                        <ul className="service-list pf_fadeup">
+                    <div className="col-lg-4 "  style={{
+                        marginTop:"120px"
+                    }}>
+                        <ul className="service-list pf_fadeup ">
                             <li>
                                 
                                 <Link to="/service/service-details" className="agenko-iconic-box style-one">
@@ -80,14 +82,14 @@ const HeroBanner2 = () => {
                             </li>
                             <li>
                                
-                                <Link to="/service/service-details" className="agenko-iconic-box style-one">
+                                {/* <Link to="/service/service-details" className="agenko-iconic-box style-one">
                                     <div className="icon">
                                    <MdPool />
                                     </div>
                                     <div className="content">
                                         <h4 className="title">Swimming pool</h4>
                                     </div>
-                                </Link>
+                                </Link> */}
                             </li>
                         </ul>
                     </div>
