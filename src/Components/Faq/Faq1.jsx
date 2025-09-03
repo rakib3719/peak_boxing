@@ -59,7 +59,13 @@ const Faq1 = () => {
                         </div>
                     </div>
                     <div className="col-lg-5">
-                        <div className="faq-big-text">Faq’s</div>
+                        <div className="" style={
+
+                            {
+                                fontSize:"42px",
+                                fontWeight:"600"
+                            }
+                        }>Faq’s</div>
                     </div>
                 </div>
                 <div className="row">

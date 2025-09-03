@@ -19,7 +19,9 @@ const WhoWeAre = () => {
         };
 
     return (
-                    <section className="agk-who-we gray-dark pt-130 pb-70">
+                    <section className="agk-who-we gray-dark pt-130 pb-70" style={{
+                        overflow:"hidden"
+                    }}>
                         <div className="container">
                             <div className="row">
                                 <div className="col-xl-5">

@@ -57,6 +57,148 @@ Version: 1.0
 }
 
 
+/* Header1.css - Mobile menu animation styles */
+
+/* Hamburger menu button styling */
+.cs-munu_toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  z-index: 1001;
+  transition: transform 0.3s ease;
+}
+
+.cs-munu_toggle:hover {
+  transform: scale(1.1);
+}
+
+.cs-toggle-line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+  margin: 3px 0;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* Animation when menu is active */
+.cs_toggle_active .cs-toggle-line.cs-line-1 {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.cs_toggle_active .cs-toggle-line.cs-line-2 {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.cs_toggle_active .cs-toggle-line.cs-line-3 {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Mobile menu animation */
+.cs_nav > nav {
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.3s ease;
+}
+
+/* When mobile menu is hidden */
+@media (max-width: 991px) {
+  .cs_nav > nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-100%);
+    opacity: 0;
+    padding: 80px 20px 40px;
+  }
+  
+  .cs_mobile_toggle_active .cs_nav > nav {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+  /* Menu items animation */
+  .cs_nav > nav ul li {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+  }
+  
+  .cs_mobile_toggle_active .cs_nav > nav ul li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Staggered animation for menu items */
+  .cs_mobile_toggle_active .cs_nav > nav ul li:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+  .cs_mobile_toggle_active .cs_nav > nav ul li:nth-child(2) {
+    transition-delay: 0.15s;
+  }
+  .cs_mobile_toggle_active .cs_nav > nav ul li:nth-child(3) {
+    transition-delay: 0.2s;
+  }
+  .cs_mobile_toggle_active .cs_nav > nav ul li:nth-child(4) {
+    transition-delay: 0.25s;
+  }
+  .cs_mobile_toggle_active .cs_nav > nav ul li:nth-child(5) {
+    transition-delay: 0.3s;
+  }
+}
+
+/* Close button inside mobile menu */
+.cs-mobile-menu-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1002;
+}
+
+/* Overlay for background when menu is open */
+.cs-mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.cs_mobile_toggle_active .cs-mobile-menu-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
 .birthstone{
     font-family: "Birthstone", cursive;
 }

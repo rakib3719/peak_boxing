@@ -5,7 +5,9 @@ import aboutImg from '../../../src/assets/images/about.jpeg'
 
 const About1 = () => {
     return (
-        <section className="agk-about pt-130 pb-80">
+        <section className="agk-about pt-130 pb-80" style={{
+            overflow:"hidden"
+        }}>
         <div className="container">
             <div className="row">
                 <div className="col-xl-7">
