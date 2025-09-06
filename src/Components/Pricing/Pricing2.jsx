@@ -2,8 +2,8 @@ import React from 'react';
 
 const Pricing2 = () => {
     return (
-        <section className="agenko-pricing pt-130 pb-90">
-            <div className="container">
+        <section id='pricing' className="agenko-pricing pt-130 pb-90">
+            <div className="container" >
                 <div className="row">
                     <div className="col-lg-12">
                         <div className="section-title text-center mb-50 pf_zoomIn">

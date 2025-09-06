@@ -20,6 +20,8 @@ import BlogSidebarPage from "../Pages/BlogSidebarPage";
 import BlogDetailsPage from "../Pages/BlogDetailsPage";
 import SignIn from "../Pages/SignIn";
 import Register from "../Pages/SignUp";
+import DashBoard from "../Pages/DashBoard";
+import Settings from "../Pages/Settings";
 
 export const router = createBrowserRouter([
     {
@@ -98,6 +100,17 @@ export const router = createBrowserRouter([
           path: "/sign-up",
           element:<Register/>,
         },                                                                                                                                                                  
+      {
+  path: "/dashboard",
+  element:<DashBoard />,
+  children:[
+    {
+      path: "settings", 
+      element: <Settings />,
+    }
+  ]
+}
+                                                                                                                                                                  
       ],
     },  
   ]);

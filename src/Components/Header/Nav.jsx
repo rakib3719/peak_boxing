@@ -15,20 +15,20 @@ export default function Nav({ setMobileToggle }) {
 
       
     
-
+{/* 
       <li className="">
         <Link to="/service" >
           Services
         </Link>
      
-      </li>
+      </li> */}
 
-      <li className="">
+      {/* <li className="">
         <Link to="/about" >
   About Us
         </Link>
      
-      </li> 
+      </li>  */}
       
       {/* <li className="menu-item-has-children">
         <Link to="/blog" onClick={() => setMobileToggle(false)}>
@@ -62,6 +62,11 @@ export default function Nav({ setMobileToggle }) {
           Contact
         </Link>
       </li>
+      {/* <li>
+        <Link to="/sign-in" onClick={() => setMobileToggle(false)}>
+          Sign in
+        </Link>
+      </li> */}
     </ul>
   );
 }

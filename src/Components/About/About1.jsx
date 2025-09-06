@@ -22,7 +22,7 @@ const About1 = () => {
 </p>
                     <p>Our dedicated trainers work closely with every member to understand their goals—whether it’s fitness, competition, or personal growth—crafting customized programs that deliver real, measurable results..</p>
                     <div className="agk-button mb-30">
-                      <Link to="/about" className="theme-btn style-one">
+                      <a href="#pricing" className="theme-btn style-one">
                                                            <span className="text-flip">
                                                                <span className="text">GET STARTED</span>
                                                                <span className="text" style={{
@@ -31,7 +31,7 @@ const About1 = () => {
                                                                    fontWeight:"700"
                                                                }}> <BsArrowRight/></span>
                                                            </span>
-                                                       </Link>
+                                                       </a>
                     </div>
                     <ul>
                         <li>

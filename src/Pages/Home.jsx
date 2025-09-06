@@ -11,19 +11,24 @@ import Team2 from '../Components/Team/Team2';
 import Brand2 from '../Components/Brand/Brand2';
 import Blog2 from '../Components/Blog/Blog2';
 import ZymBoxingGallery from '../Components/Project/Project2';
+import Banner from './Banner';
+import Pricing2 from '../Components/Pricing/Pricing2';
 
 const Home2 = () => {
     return (
         <div>
-            <HeroBanner2></HeroBanner2>
+            {/* <HeroBanner2></HeroBanner2> */}
+            <Banner/>
+  
             <About1></About1>
-            <Services2></Services2>
+            {/* <Services2></Services2> */}
+                    <Pricing2/>
             {/* <Project2></Project2> */}
             <ZymBoxingGallery/>
-            <WhoWeAre></WhoWeAre>
-            <Process2></Process2>
+            {/* <WhoWeAre></WhoWeAre> */}
+            {/* <Process2></Process2> */}
             {/* <Testimonial2></Testimonial2> */}
-            <Faq1></Faq1>
+            {/* <Faq1></Faq1> */}
             {/* <Team2></Team2> */}
             {/* <Brand2></Brand2>
             <Blog2></Blog2> */}

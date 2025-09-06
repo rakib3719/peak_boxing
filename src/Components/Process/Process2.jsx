@@ -27,7 +27,7 @@ const Process2 = () => {
 
                 <div className="row">
                     {/* Step 1 */}
-                    <div className="col-xl-3 col-md-6 col-sm-12">
+                    <div className="col-xl-3  col-md-6 col-sm-12">
                         <div className="agenko-iconic-box style-two mb-40 pf_fadeup">
                             <div className="icon">
                                 <i className="bi bi-flag"></i>

@@ -1,11 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Footer = () => {
+
+    const location = useLocation();
+  console.log(location, "This is your acclador lcoaiton");
+  const pathname = location.pathname;
+
+  if(pathname.includes('dashboard')){
+    return null;
+  }
     return (
             <footer className="agenko-footer gray-dark pt-130 primary-black-bg">
-                    <div className="shape shape-one"><span><img className="rotate360" src="/assets/images/creative-agency/footer/element1.png" alt="Shape" /></span></div>
-                    <div className="shape shape-two"><span><img className="rotate360" src="/assets/images/creative-agency/footer/element2.png" alt="Shape" /></span></div>
+                    {/* <div className="shape shape-one"><span><img className="rotate360" src="/assets/images/creative-agency/footer/element1.png" alt="Shape" /></span></div>
+                    <div className="shape shape-two"><span><img className="rotate360" src="/assets/images/creative-agency/footer/element2.png" alt="Shape" /></span></div> */}
                     <div className="shape shape-blur_one"><span></span></div>
                     <div className="shape shape-blur_two"><span></span></div>
                     
@@ -16,7 +24,9 @@ const Footer = () => {
                                     
                                     <div className="footer-widget footer-about-widget mb-40 pf_fadeup">
                                         <div className="footer-content">
-                                            <div className="footer-logo">
+                                            <div className="" style={{
+                                                marginBottom:'20px'
+                                            }}>
                                              <h4>PEAK BOXING CLUB</h4>
                                             </div>
                                             <p>Agenko creative digital agency delivering innovate web Development marketing.</p>
@@ -47,7 +57,7 @@ const Footer = () => {
                                     <div className="row">
                                         <div className="col-md-5">
                                             
-                                            <div className="footer-widget footer-nav-widget mb-40 pf_fadeup">
+                                            {/* <div className="footer-widget footer-nav-widget mb-40 pf_fadeup">
                                                 <div className="footer-content mb-35">
                                                     <h4 className="widget-title">Our Link</h4>
                                                     <ul className="footer-nav">
@@ -68,7 +78,7 @@ const Footer = () => {
                                                         </li>
                                                     </ul>
                                                 </div>
-                                            </div>
+                                            </div> */}
                                         </div>
                                         <div className="col-md-7">
                                            

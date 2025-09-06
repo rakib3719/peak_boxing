@@ -177,7 +177,7 @@ const SignIn = () => {
                   </div>
                   
                   <Link 
-                    to="/forgot-password" 
+                    to="#forgot-password" 
                     style={{
                       color: "#9CFE4F",
                       textDecoration: "none",
