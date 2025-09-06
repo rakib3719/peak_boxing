@@ -60,9 +60,9 @@ const Contact = () => {
                             <div class="agenko-content-box mb-50 pf_fadeup">
                                 <div class="section-title mb-20">
                                     <span class="sub-title">Get In Touch</span>
-                                    <h2>      Get started and grow your business now.</h2>
+                                    <h2>      Step up and reach your peak now.</h2>
                                 </div>
-                                <p class="mb-20">Start today to unlock opportunities and drive your business toward success.</p>
+                                <p class="mb-20">Start now and rise to the top of your game.</p>
                                 <form class="agenko-contact-form style-one" id="contact-form" action="contact.php" method="POST">
                                     <div class="row">
                                         <div class="col-md-6">

@@ -4866,7 +4866,7 @@ label {
   width: 100%;
   background-color: var(--white-color);
   border-radius: 5px;
-  padding: 10px 130px 10px 50px;
+  padding: 10px 30px 10px 15px;
   color: var(--heading-color);
   border: none;
 }

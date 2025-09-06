@@ -29,7 +29,7 @@ const Footer = () => {
                                             }}>
                                              <h4>PEAK BOXING CLUB</h4>
                                             </div>
-                                            <p>Agenko creative digital agency delivering innovate web Development marketing.</p>
+                                            <p>Peak Boxing Club – Empowering champions through expert training, fitness, and dedication.</p>
                                             <form>
                                                 <div className="form-group">
                                                     <input type="email" className="form_control" placeholder="Email Address" name="email" required />

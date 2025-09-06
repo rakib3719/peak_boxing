@@ -18,9 +18,9 @@ const BreadCumb = ({Title,content}) => {
                             <div className="col-xl-8">
                                 
                                 <div className="text-box d-flex align-items-center">
-                                    <div className="icon">
+                                    {/* <div className="icon">
                                         <img className="rotate360" src="/assets/images/pages/shape/star1.png" alt="Shape" />
-                                    </div>
+                                    </div> */}
                                     <div className="text">
                                         <p>{content}</p>
                                     </div>
@@ -39,12 +39,12 @@ const BreadCumb = ({Title,content}) => {
                 <div className="col-lg-3">
                     
                     <div className="circle-box float-xl-end text-center text-xl-end">
-                        <img className="rotate360" src={circleImage} alt="img" style={
+                        {/* <img className="rotate360" src={circleImage} alt="img" style={
                             {
                               maskSize:"40px",
                               borderRadius:"10px 10px 10px 10px"
                             }
-                        } />
+                        } /> */}
                     </div>
                 </div>
             </div>

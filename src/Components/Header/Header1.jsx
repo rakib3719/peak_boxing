@@ -54,7 +54,7 @@ export default function Header1({ variant }) {
             </div>
 
             {/* Nav */}
-            <div className="cs_main_header_left">
+            <div className="">
               <div className="cs_nav cs_primary_font fw-medium">
                 <span
                   className={
@@ -72,7 +72,7 @@ export default function Header1({ variant }) {
 
             {/* Right Side Buttons */}
             <div className="cs_main_header_right">
-              <div className="header-btn d-flex align-items-center">
+              <div className=" d-flex align-items-center">
                 <div className="main-button">
                   <Link to="/sign-in" className="theme-btn style-one">
                     <span className="text-flip">

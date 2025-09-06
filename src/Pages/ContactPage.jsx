@@ -7,7 +7,7 @@ const ContactPage = () => {
         <div>
             <BreadCumb
                 Title="Contact"
-                content="Agenko empowers businesses with innovative strategies & creative agency solutions"
+                content="Peak Boxing Club drives success with bold strategies and creative solutions."
             ></BreadCumb>   
             <Contact></Contact>         
         </div>
