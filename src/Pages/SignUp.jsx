@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BsArrowRight, BsEye, BsEyeSlash, BsPerson, BsTelephone } from 'react-icons/bs';
+import toast, { Toaster } from 'react-hot-toast';
+import axios from 'axios';
+import { base_url } from '../utils/utils';
+import { span } from 'framer-motion/client';
 
 const Register = () => {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
-    contact: '',
+    mobileNumber: '',
     password: '',
     confirmPassword: '',
     dob: '',
@@ -17,33 +21,61 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [agreeToTerms, setAgreeToTerms] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
+
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async(e) => {
+          e.preventDefault();
+         setLoading(true);
+
+try {
+
+
+   
     
     // Basic validation
     if (formData.password !== formData.confirmPassword) {
-      alert("Passwords don't match!");
+      toast.error("Passwords don't match!");
       return;
     }
     
     if (!agreeToTerms) {
-      alert("Please agree to the terms and conditions");
+      toast.error("Please agree to the terms and conditions");
       return;
     }
     
     // Here you would typically handle the registration logic
     console.log('Registration attempt with:', formData);
+
+    const data = await axios.post(`${base_url}/user/signup`, formData);
+    console.log(data, "Registration console")
+
+    if(data.status === 200){
+      setLoading(false)
+      toast.success('Registration Successfull');
+      window.location.href = '/sign-in';
+  
+    }
+
+
+
     
     // For demonstration purposes, let's just show an alert
-    alert(`Registration submitted!\nWe'll contact you at ${formData.email} soon.`);
+
+  
+} catch (error) {
+  setLoading(false)
+  toast.error(error?.response?.data?.message || "Something went wrong")
+}finally{
+  setLoading(false)
+}
   };
 
   return (
@@ -57,6 +89,7 @@ const Register = () => {
       overflow: "hidden",
       position: "relative"
     }}>
+      <Toaster/>
       {/* Decorative elements */}
       <div className="shape shape-one" style={{
         position: "absolute",
@@ -190,10 +223,10 @@ const Register = () => {
                         }} />
                         <input 
                           type="tel" 
-                          name="contact"
+                          name="mobileNumber"
                           className="form-control" 
                           placeholder="Contact Number" 
-                          value={formData.contact}
+                          value={formData.mobileNumber}
                           onChange={handleChange}
                           required 
                           style={{
@@ -457,7 +490,7 @@ const Register = () => {
                       transition: "all 0.3s ease"
                     }}
                   >
-                    CREATE ACCOUNT <BsArrowRight />
+                   {!loading ? <span><span> CREATE ACCOUNT</span> <BsArrowRight /> </span>  : "Loading..."}
                   </button>
                 </div>
               </form>

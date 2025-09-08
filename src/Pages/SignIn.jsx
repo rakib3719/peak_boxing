@@ -1,21 +1,61 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { BsArrowRight, BsEye, BsEyeSlash } from 'react-icons/bs';
-
+import { BsArrowRight, BsEye, BsEyeSlash, BsX } from 'react-icons/bs';
+import axios from 'axios';
+import { base_url } from '../utils/utils';
+import toast, { Toaster } from 'react-hot-toast';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [showForgotPasswordModal, setShowForgotPasswordModal] = useState(false);
+  const [forgotPasswordEmail, setForgotPasswordEmail] = useState('');
+  const [sendingOtp, setSendingOtp] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    // Here you would typically handle the sign-in logic
-    console.log('Sign in attempt with:', { email, password, rememberMe });
+    setLoading(true);
+
+    try {
+      const data = await axios.post(`${base_url}/user/login`, {email, password}, {withCredentials:true});
+      if(data.status === 200 ){
+        toast.success("Login Success");
+          window.location.href = '/';
+          setLoading(false);
+      }
+    } catch (error) {
+      console.log(error?.response?.data?.message);
+      toast.error(error?.response?.data?.message);
+      setLoading(false);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSendOtp = async () => {
+    if (!forgotPasswordEmail) {
+      toast.error("Please enter your email address");
+      return;
+    }
     
-    // For demonstration purposes, let's just show an alert
-    alert(`Login attempted with:\nEmail: ${email}\nPassword: ${password}`);
+    setSendingOtp(true);
+    try {
+      const response = await axios.post(`${base_url}/otp/send/${forgotPasswordEmail}`);
+      if (response.status === 200) {
+        toast.success("OTP sent successfully!");
+        // Redirect to forget password page with the email
+        window.location.href = `/forgetpassword/${forgotPasswordEmail}`;
+      }
+    } catch (error) {
+      console.log(error)
+      console.log(error?.response?.data?.message);
+      toast.error(error?.response?.data?.message || "Failed to send OTP");
+    } finally {
+      setSendingOtp(false);
+    }
   };
 
   return (
@@ -29,6 +69,113 @@ const SignIn = () => {
       overflow: "hidden",
       position: "relative"
     }}>
+      <Toaster/>
+      
+      {/* Forgot Password Modal */}
+      {showForgotPasswordModal && (
+        <div style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: "rgba(0,0,0,0.7)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          zIndex: 1000,
+          padding: "20px"
+        }}>
+          <div style={{
+            background: "#111",
+            padding: "30px",
+            borderRadius: "12px",
+            boxShadow: "0 10px 30px rgba(0,0,0,0.5)",
+            border: "1px solid #222",
+            width: "100%",
+            maxWidth: "450px",
+            position: "relative"
+          }}>
+            <button 
+              onClick={() => setShowForgotPasswordModal(false)}
+              style={{
+                position: "absolute",
+                top: "15px",
+                right: "15px",
+                background: "none",
+                border: "none",
+                color: "#aaa",
+                fontSize: "24px",
+                cursor: "pointer"
+              }}
+            >
+              <BsX />
+            </button>
+            
+            <h2 style={{ 
+              color: "#fff", 
+              marginBottom: "15px",
+              textAlign: "center"
+            }}>
+              Reset Password
+            </h2>
+            
+            <p style={{ 
+              color: "#aaa", 
+              marginBottom: "20px",
+              textAlign: "center",
+              fontSize: "14px"
+            }}>
+              Enter your email address and we'll send you an OTP to reset your password.
+            </p>
+            
+            <div className="form-group mb-20">
+              <input 
+                type="email" 
+                className="form-control" 
+                placeholder="Email Address" 
+                value={forgotPasswordEmail}
+                onChange={(e) => setForgotPasswordEmail(e.target.value)}
+                required 
+                style={{
+                  width: "100%",
+                  padding: "15px 20px",
+                  borderRadius: "8px",
+                  border: "1px solid #333",
+                  background: "#0a0a0a",
+                  color: "#fff",
+                  fontSize: "16px",
+                  transition: "all 0.3s ease"
+                }}
+              />
+            </div>
+            
+            <button 
+              onClick={handleSendOtp}
+              disabled={sendingOtp}
+              style={{
+                width: "100%",
+                padding: "15px",
+                background: sendingOtp ? "#666" : "#9CFE4F",
+                color: "black",
+                border: "none",
+                borderRadius: "8px",
+                fontSize: "16px",
+                fontWeight: "600",
+                cursor: sendingOtp ? "not-allowed" : "pointer",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "10px",
+                transition: "all 0.3s ease"
+              }}
+            >
+              {sendingOtp ? "Sending OTP..." : "Send OTP"}
+            </button>
+          </div>
+        </div>
+      )}
+      
       {/* Decorative elements */}
       <div className="shape shape-one" style={{
         position: "absolute",
@@ -83,7 +230,7 @@ const SignIn = () => {
                   Welcome to <span className="pro" style={{color: "#9CFE4F"}}>Peak Boxing Club</span>
                 </h2>
                 <p style={{ color: "#aaa", marginBottom: "30px" }}>
-                  Sign in to access your training dashboard
+                  Sign in 
                 </p>
               </div>
               
@@ -153,31 +300,9 @@ const SignIn = () => {
                   justifyContent: "space-between",
                   alignItems: "center"
                 }}>
-                  <div className="form-check">
-                    <input 
-                      type="checkbox" 
-                      className="form-check-input" 
-                      id="rememberMe"
-                      checked={rememberMe}
-                      onChange={(e) => setRememberMe(e.target.checked)}
-                      style={{
-                        marginRight: "8px"
-                      }}
-                    />
-                    <label 
-                      htmlFor="rememberMe" 
-                      style={{
-                        color: "#aaa",
-                        cursor: "pointer",
-                        fontSize: "14px"
-                      }}
-                    >
-                      Remember me
-                    </label>
-                  </div>
-                  
                   <Link 
-                    to="#forgot-password" 
+                    to="#"
+                    onClick={() => setShowForgotPasswordModal(true)}
                     style={{
                       color: "#9CFE4F",
                       textDecoration: "none",
@@ -210,67 +335,10 @@ const SignIn = () => {
                       transition: "all 0.3s ease"
                     }}
                   >
-                    SIGN IN <BsArrowRight />
+                    {loading ? "Loading..." : <span>SIGN IN <BsArrowRight /></span>}
                   </button>
                 </div>
               </form>
-              
-              <div className="signin-divider" style={{
-                position: "relative",
-                textAlign: "center",
-                margin: "25px 0",
-                color: "#666"
-              }}>
-                <span style={{
-                  padding: "0 15px",
-                  background: "#111",
-                  position: "relative",
-                  zIndex: "1",
-                  fontSize: "14px"
-                }}>
-                  Or continue with
-                </span>
-                <div style={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "0",
-                  right: "0",
-                  height: "1px",
-                  background: "#333",
-                  zIndex: "0"
-                }}></div>
-              </div>
-              
-              <div className="social-login" style={{
-                display: "flex",
-                gap: "15px",
-                marginBottom: "25px"
-              }}>
-                <button style={{
-                  flex: "1",
-                  padding: "12px",
-                  borderRadius: "8px",
-                  border: "1px solid #333",
-                  background: "#0a0a0a",
-                  color: "#fff",
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "8px",
-                  transition: "all 0.3s ease"
-                }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-                  </svg>
-                  Google
-                </button>
-                
-          
-              </div>
               
               <div className="" style={{
                 textAlign: "center",

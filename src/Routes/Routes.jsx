@@ -22,6 +22,7 @@ import SignIn from "../Pages/SignIn";
 import Register from "../Pages/SignUp";
 import DashBoard from "../Pages/DashBoard";
 import Settings from "../Pages/Settings";
+import ForgetPassword from "../Pages/ForgetPassword";
 
 export const router = createBrowserRouter([
     {
@@ -99,6 +100,10 @@ export const router = createBrowserRouter([
         {
           path: "/sign-up",
           element:<Register/>,
+        },                                                                                                                                                                  
+        {
+          path: "/forgetpassword/:email",
+          element:<ForgetPassword/>,
         },                                                                                                                                                                  
       {
   path: "/dashboard",
